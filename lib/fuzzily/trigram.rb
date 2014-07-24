@@ -20,8 +20,8 @@ module Fuzzily
     # return list of normalized words
     def normalize
       ActiveSupport::Multibyte::Chars.new(self).
-        mb_chars.normalize(:kd).gsub(/[^\x00-\x7F]/,'').downcase.to_s.
-        gsub(/[^a-z]/,' ').
+        mb_chars.normalize(:kd).downcase.to_s.
+        gsub(/[^а-я][^a-z][^0-9]/,' ').
         gsub(/\s+/,'*').
         gsub(/^/,'**').
         gsub(/$/,'*')
