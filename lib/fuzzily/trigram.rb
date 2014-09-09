@@ -21,7 +21,7 @@ module Fuzzily
     def normalize
       ActiveSupport::Multibyte::Chars.new(self).
         mb_chars.normalize(:kd).downcase.to_s.
-        gsub(/[^а-я][^a-z][^0-9]/,' ').
+        gsub(/[а-я][a-z][0-9]/,' ').
         gsub(/\s+/,'*').
         gsub(/^/,'**').
         gsub(/$/,'*')
