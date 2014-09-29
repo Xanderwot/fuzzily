@@ -6,8 +6,8 @@ module Fuzzily
     def trigrams
       return [] if __getobj__.nil?
       normalized = self.normalize
-      number_of_trigrams = normalized.length - 5
-      trigrams = (0..number_of_trigrams).map { |index| normalized[index,5] }.uniq
+      number_of_trigrams = normalized.length - 4
+      trigrams = (0..number_of_trigrams).map { |index| normalized[index,4] }.uniq
     end
 
     def scored_trigrams
