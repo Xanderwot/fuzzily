@@ -6,8 +6,8 @@ module Fuzzily
     def trigrams
       return [] if __getobj__.nil?
       normalized = self.normalize
-      number_of_trigrams = normalized.length - 4
-      trigrams = (0..number_of_trigrams).map { |index| normalized[index,4] }.uniq
+      number_of_trigrams = normalized.length - 2
+      trigrams = (0..number_of_trigrams).map { |index| normalized[index,2] }.uniq
     end
 
     def scored_trigrams
@@ -22,9 +22,7 @@ module Fuzzily
       ActiveSupport::Multibyte::Chars.new(self).
         mb_chars.normalize(:kd).downcase.to_s.
         gsub(/[а-я][a-z][0-9]/,' ').
-        gsub(/\s+/,'*').
-        gsub(/^/,'**').
-        gsub(/$/,'*')
+        gsub(/\s+/,'*')
     end
   end
 end
